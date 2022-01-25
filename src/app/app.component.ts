@@ -25,12 +25,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  searchCripto() {
+  searchCripto(event:any) {
+    this.searchText = event.target.value;
     this.isFiltered = true;
     this.filteredCriptoList = this.criptoList.filter(
       (x) =>
-        x.name.toLocaleLowerCase().includes(this.searchText) ||
-        x.symbol.toLocaleLowerCase().includes(this.searchText)
+        x.name.toLocaleLowerCase().includes(this.searchText.toLowerCase()) ||
+        x.symbol.toLocaleLowerCase().includes(this.searchText.toLowerCase())
     );
   }
 }
